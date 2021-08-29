@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import Header from "./components/Header";
+import Mangement from "./components/Mangement";
+import SignUp from "./components/SignUp";
+import Login from "./components/Login";
+import Add from "./Add";
+import { fetchMangement } from "./components/services/Actions/managementAction";
+import { useDispatch } from "react-redux";
+import { HashRouter, Route, Switch } from "react-router-dom";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMangement());
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-cover">
+      <HashRouter>
+        <Header />
+        <Switch>
+          <Route path="/" exact component={Mangement} />
+          <Route path="/add" component={Add} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </HashRouter>
     </div>
   );
 }
