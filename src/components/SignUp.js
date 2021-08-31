@@ -22,9 +22,9 @@ function SingnUp() {
     event.preventDefault();
 
     if (
-      singnUpData.name.trim() !== "" ||
-      singnUpData.email.trim() !== "" ||
-      singnUpData.password.trim() !== ""
+      (singnUpData.name.trim() !== "") &
+      (singnUpData.email.trim() !== "") &
+      (singnUpData.password.trim() !== "")
     ) {
       async function signUp() {
         let result = await fetch(

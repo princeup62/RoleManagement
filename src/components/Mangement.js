@@ -13,13 +13,6 @@ function Mangement() {
     dispatch(fetchMangement());
   }, []);
 
-  useEffect(() => {
-    if (localStorage.getItem("user-info")) {
-    } else {
-      history.push("/signup");
-    }
-  }, []);
-
   const [filterData, setFilterData] = useState("");
 
   console.log(managementState);

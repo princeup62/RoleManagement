@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { postRoleManagement } from "./components/services/Actions/managementAction";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -7,13 +7,6 @@ function Add() {
   const managementState = useSelector((state) => state.managementReducer);
 
   let history = useHistory();
-
-  useEffect(() => {
-    if (localStorage.getItem("user-info")) {
-    } else {
-      history.push("/signup");
-    }
-  }, []);
 
   const dispatch = useDispatch();
 
