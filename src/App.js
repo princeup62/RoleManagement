@@ -4,10 +4,11 @@ import Mangement from "./components/Mangement";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import Protected from "./components/Protected";
+import Modification from "./Modification";
 import Add from "./Add";
 import { fetchMangement } from "./components/services/Actions/managementAction";
 import { useDispatch } from "react-redux";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,11 +19,9 @@ function App() {
 
   return (
     <div className="bg-cover">
-      <HashRouter>
+      <BrowserRouter>
         <Header />
         <Switch>
-          {/* <Route path="/" exact component={Mangement} />
-          <Route path="/add" component={Add} /> */}
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path="/" exact>
@@ -31,8 +30,11 @@ function App() {
           <Route path="/add" exact>
             <Protected Cmp={Add} />
           </Route>
+          <Route path="/modification" exact>
+            <Protected Cmp={Modification} />
+          </Route>
         </Switch>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 }
